@@ -2,6 +2,22 @@
 import Input from '../components/input/Input.vue';
 import ButtonLoading from '../components/button/ButtonLoading.vue'
 import InputPassword from '../components/input/InputPassword.vue';
+import { ref } from 'vue'
+const Password = ref({
+    display: false,
+    type: 'password',
+    name:''
+});
+
+const displayPw = () => {
+    Password.value.display = !Password.value.display;
+    Password.value.type = 'text';
+}
+
+const noneDisplayPw = () => {
+    Password.value.display = !Password.value.display;
+    Password.value.type = 'password';
+}
 </script>
 
 <template>
@@ -18,7 +34,7 @@ import InputPassword from '../components/input/InputPassword.vue';
                     name="email"
                     placeholder="example@gmail.com"
                     />
-                    <InputPassword/>
+                    <InputPassword :Password="Password" @display-pw="displayPw" @none-display-pw="noneDisplayPw"/>
                     <ButtonLoading/>
                 </form>
             </div>
@@ -34,7 +50,8 @@ import InputPassword from '../components/input/InputPassword.vue';
         height: 100vh;
         display: flex;
         justify-content: center;
-        align-items: center;;
+        align-items: center;
+        background-color: #4575d81a;
     }
     .login-container > .login-content{
         width: 100%;
@@ -56,8 +73,22 @@ import InputPassword from '../components/input/InputPassword.vue';
         align-items: center;
         position: relative;
         border-radius: 0.5rem;
-        background-color: rgb(228, 238, 255);
+        // background-color: white;
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,.25);
+        backdrop-filter: blur(5px);
+        // opacity: 0.5;
     }
+
+    // .login-content > .login-form::before{
+    // backdrop-filter: blur(3px);
+    // background: inherit;
+    // border-radius: 8px;
+    // box-shadow: inset 0 0 2000px hsla(0,0%,100%,.1);
+    // content: "";
+    // inset: 0;
+    // position: absolute;
+    // }
+
     .login-form > .welcome{
         font-weight: 600;
         margin-bottom: 0.5rem;

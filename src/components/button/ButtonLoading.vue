@@ -24,5 +24,6 @@
         font-weight: 600;
         border: none;
         font-size: 18px;
+        cursor: pointer;
     }
 </style>

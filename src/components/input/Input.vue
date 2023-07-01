@@ -47,9 +47,9 @@
         line-height: 1.25rem/* 20px */;
         outline: none;
         border: none;
-        
-    }
-    input::placeholder{
         padding-left: 20px;
+        padding-right: 20px;
+        border: 1px solid #ccc;
     }
+
 </style>
