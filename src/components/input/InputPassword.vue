@@ -23,8 +23,8 @@ import { Icon } from '@iconify/vue';
             />
 
             <div class="password-eye">
-                <Icon v-if="Password.display" icon="ph:eye" @click="$emit('none-display-pw')" />
-                <Icon v-else icon="iconamoon:eye-off-light" @click="$emit('display-pw')" />
+                <Icon v-if="Password.display" icon="ph:eye" @click="$emit('none-display-pw')" width="25" height="25"/>
+                <Icon v-else icon="iconamoon:eye-off-light" @click="$emit('display-pw')" width="25" height="25"/>
             </div>
         </div>
     </div>

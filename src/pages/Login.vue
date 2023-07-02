@@ -1,6 +1,6 @@
 <script setup>
 import Input from '../components/input/Input.vue';
-import ButtonLoading from '../components/button/ButtonLoading.vue'
+import ButtonLoading from '../components/button/ButtonGeneral.vue'
 import InputPassword from '../components/input/InputPassword.vue';
 import { ref } from 'vue'
 const Password = ref({
@@ -35,7 +35,7 @@ const noneDisplayPw = () => {
                     placeholder="example@gmail.com"
                     />
                     <InputPassword :Password="Password" @display-pw="displayPw" @none-display-pw="noneDisplayPw"/>
-                    <ButtonLoading/>
+                    <ButtonLoading nameClass="buttonSignin">Sign in</ButtonLoading>
                 </form>
             </div>
         </div>
@@ -79,16 +79,6 @@ const noneDisplayPw = () => {
         // opacity: 0.5;
     }
 
-    // .login-content > .login-form::before{
-    // backdrop-filter: blur(3px);
-    // background: inherit;
-    // border-radius: 8px;
-    // box-shadow: inset 0 0 2000px hsla(0,0%,100%,.1);
-    // content: "";
-    // inset: 0;
-    // position: absolute;
-    // }
-
     .login-form > .welcome{
         font-weight: 600;
         margin-bottom: 0.5rem;
@@ -121,6 +111,12 @@ const noneDisplayPw = () => {
         width: 85%;
         z-index: 10;
         // width: 100%;
-
     }  
+
+    .form-signin > .buttonSignin{
+        margin-top: 0.5rem/* 8px */;
+        width: 100%;
+        height: 45px;
+        font-size: 18px;
+    }
 </style>
