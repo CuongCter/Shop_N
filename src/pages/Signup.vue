@@ -21,49 +21,47 @@ const noneDisplayPw = () => {
 }
 
 const onSubmit = () => {
-    
+
 }
 </script>
 
 <template>
-    <div class="login-container">
+    <div class="signup-container">
         <NavigationBrand/>
-        <div class="login-content">
-            <div class="login-form">
-                <h4 class="welcome">Welcome Back!</h4>
-                <h3 class="not-account">Don't have an account?
+        <div class="signup-content">
+            <div class="signup-form">
+                <h4 class="welcome">Welcome To Our Website!</h4>
+                <h3 class="have-account">Already have an account?
                      <span>
-                        <router-link to="/signup" class="sign-up">Sign up</router-link>
+                        <router-link class="sign-in" to="/login">Sign in</router-link>
                      </span></h3>
-                <h3 class="sign-in">
-                    Sign In
+                <h3 class="sign-up">
+                    Sign up
                 </h3>
-                <form @submit="onSubmit" autocomplete="off" class="form-signin">
+                <form @submit="onSubmit" autocomplete="off" class="form-signup">
+                    <Input text="Name*" type="text" name="name" placeholder="John Doe"/>
                     <Input text="Email*" type="text"
                     name="email"
                     placeholder="example@gmail.com"
                     />
                     <InputPassword :Password="Password" @display-pw="displayPw" @none-display-pw="noneDisplayPw"/>
-                    <Button type="submit" nameClass="buttonSignin">Sign in</Button>
+                    <Button type="submit" nameClass="buttonSignup">Create an account</Button>
                 </form>
             </div>
         </div>
     </div>
 </template>
 
-
-
 <style lang="scss" scoped>
-    .login-container{
+    .signup-container{
         width: 100%;
         height: 100vh;
         // display: flex;
         // justify-content: center;
-        // flex-direction: column;
         // align-items: center;
         background-color: #4575d81a;
     }
-    .login-container > .login-content{
+    .signup-container > .signup-content{
         width: 100%;
         padding: 1.25rem;
         position: relative;
@@ -71,7 +69,7 @@ const onSubmit = () => {
         justify-content: center;
         align-items: center;
     }
-    .login-content > .login-form{
+    .signup-content > .signup-form{
         max-width: 500px;
         width: 100%;
         margin-left: auto;
@@ -89,14 +87,14 @@ const onSubmit = () => {
         // opacity: 0.5;
     }
 
-    .login-form > .welcome{
+    .signup-form > .welcome{
         font-weight: 600;
         margin-bottom: 0.5rem;
         z-index: 10;
         font-size: 1.25rem/* 20px */;
         line-height: 1.75rem/* 28px */;
     }
-    .login-form > .not-account{
+    .signup-form > .have-account{
         margin-bottom: 1.25rem;
         font-size: 0.875rem/* 14px */;
         line-height: 1.25rem/* 20px */;
@@ -104,18 +102,20 @@ const onSubmit = () => {
         z-index: 10;
         
     }
-    .not-account .sign-up{
+    .have-account .sign-in{
         color: blue;
+        font-size: 14px;
+        cursor: pointer;
         text-decoration: none;
     }
-    .sign-in{
+    .sign-up{
         font-size: 1.5rem/* 24px */;
         line-height: 2rem/* 32px */;
         font-weight: 600;
         margin-bottom: 1.25rem;
         z-index: 10;
     }
-    .form-signin{
+    .form-signup{
         display: flex;
         flex-direction: column;
         gap: 1.25rem/* 20px */;
@@ -124,7 +124,7 @@ const onSubmit = () => {
         // width: 100%;
     }  
 
-    .form-signin > .buttonSignin{
+    .form-signup > .buttonSignup{
         margin-top: 0.5rem/* 8px */;
         width: 100%;
         height: 45px;

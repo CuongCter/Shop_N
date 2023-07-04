@@ -1,10 +1,10 @@
 <script setup>
 import { defineProps } from 'vue';
-const props = defineProps(['nameClass'])
+const props = defineProps(['nameClass', 'type'])
 </script>
 
 <template>
-    <button :class="nameClass">
+    <button :class="nameClass" :type="type">
         <slot></slot>
     </button>
 </template>
