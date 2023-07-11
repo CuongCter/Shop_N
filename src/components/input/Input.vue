@@ -1,13 +1,7 @@
 
 <script setup>
-    defineProps({
-        text: String,
-        type: String,
-        name: String,
-        placeholder: String,
-        class: String,
-        // control:String,
-    })
+    defineProps(['modelValue', 'text', 'type', 'name', 'placeholder', 'class'])
+    defineEmits(['update:modelValue'])
 </script>
 
 <template>
@@ -17,6 +11,8 @@
             :id="name"
             :placeholder="placeholder"
             :class="class"
+            :value="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)"
         >
     </div>
 </template>

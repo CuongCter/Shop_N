@@ -1,10 +1,6 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-import router from './routers/Router'
 import { initializeApp } from 'firebase/app';
-// import { getFirestore } from "firebase/firestore";
-// import { getAuth } from "firebase/auth"
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth"
 
 
 const firebaseConfig = {
@@ -17,5 +13,9 @@ const firebaseConfig = {
     measurementId: "G-PGV4WGY0Z2"
 };
 
-initializeApp(firebaseConfig);
-createApp(App).use(router).mount('#app')
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+// const projectFirestore = getFirestore(app);
+
+export {auth}
+

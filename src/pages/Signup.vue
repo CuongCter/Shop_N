@@ -4,11 +4,31 @@ import Button from '../components/button/Button.vue'
 import InputPassword from '../components/input/InputPassword.vue';
 import NavigationBrand from '../components/navigation/NavigationBrand.vue';
 import { ref } from 'vue'
+import {getAuth, createUserWithEmailAndPassword} from "firebase/auth"
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 const Password = ref({
     display: false,
     type: 'password',
-    name:''
+    // name:''
 });
+
+const name = ref("");
+const email = ref("")
+const password = ref("");
+const router = useRouter();
+
+const register = () => {
+    createUserWithEmailAndPassword(getAuth(), email.value, password.value) //trả về một Promise
+        .then((data) => {
+            console.log("Successfully register");
+            router.push('/login');
+        })
+        .catch((error) => {
+            console.log(error.code);
+            alert(error.message)
+        })
+}
 
 const displayPw = () => {
     Password.value.display = !Password.value.display;
@@ -20,9 +40,6 @@ const noneDisplayPw = () => {
     Password.value.type = 'password';
 }
 
-const onSubmit = () => {
-
-}
 </script>
 
 <template>
@@ -38,13 +55,22 @@ const onSubmit = () => {
                 <h3 class="sign-up">
                     Sign up
                 </h3>
-                <form @submit="onSubmit" autocomplete="off" class="form-signup">
-                    <Input text="Name*" type="text" name="name" placeholder="John Doe"/>
+                <form @submit.prevent="register" autocomplete="off" class="form-signup">
+                    <Input
+                    text="Name*" 
+                    type="text" 
+                    name="name" 
+                    placeholder="John Doe" 
+                    v-model="name"/>
                     <Input text="Email*" type="text"
                     name="email"
                     placeholder="example@gmail.com"
-                    />
-                    <InputPassword :Password="Password" @display-pw="displayPw" @none-display-pw="noneDisplayPw"/>
+                    v-model="email"/>
+                    <InputPassword 
+                    :Password="Password"
+                    @display-pw="displayPw" 
+                    @none-display-pw="noneDisplayPw"
+                    v-model="password"/>
                     <Button type="submit" nameClass="buttonSignup">Create an account</Button>
                 </form>
             </div>

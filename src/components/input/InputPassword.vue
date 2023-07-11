@@ -1,14 +1,11 @@
 <script setup>
 import { reactive } from 'vue';
 import { Icon } from '@iconify/vue';
-
-     defineProps({
-        Password: Object,
-    })
     // const showPassword = reactive({
     //     password: false
     // })
-    defineEmits(['change-display-pw'])
+    defineProps(['modelValue','Password'])
+    defineEmits(['change-display-pw', 'update:modelValue'])
 </script>
 
 <template>
@@ -20,6 +17,8 @@ import { Icon } from '@iconify/vue';
             :type="Password.type"
             placeholder="Enter your password"
             class="input-password"
+            :value="modelValue"
+            @input="$emit('update:modelValue', $event.target.value)"
             />
 
             <div class="password-eye">

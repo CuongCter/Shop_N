@@ -1,11 +1,12 @@
 <script setup>
-
+import "./components/configs/firebase";
+// console.log(fireStoreCore.collection('User').get());
 </script>
 
 <template>
   <div class="app-container">
       <router-view></router-view>
-    </div>
+  </div>
 </template>
 
 <style scoped lang="sass">
